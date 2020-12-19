@@ -4,15 +4,21 @@
     <ul>
       <book-item v-for="book in books" :book="book"></book-item>
     </ul>
+    <book-form v-on:addbook="appendBook" @addbook="appendBook"></book-form>
   </div>
 </template>
 
 <script>
 import BookItem from "./BookItem";
-import BookItem from "./BookItem.vue";
+import BookForm from "./BookForm";
 export default {
   name: "BookList",
-  components: { BookItem },
+  components: { BookItem, BookForm },
+  methods: {
+    appendBook: function (bookTitle, bookAuthor) {
+      this.books.push({ title: bookTitle, author: bookAuthor });
+    },
+  },
   data() {
     BookItem;
     return {
